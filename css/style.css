@@ -28,13 +28,14 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: calc(100% / 8);
-  height: calc(100% / 8); */
-  border: 2px solid white;
+  cursor: pointer;
+  border: 2px solid rgb(190, 9, 190);
+  width: calc(10%);
+  height: calc(10%);
 }
 .square.odd {
-  background-color:  red;
+  background-color: cyan;
 }
 .square.even{
-  background-color: green;
+  background-color: cyan;
 }
