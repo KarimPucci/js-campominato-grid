@@ -5,8 +5,22 @@ Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro e
 
 const container = document.querySelector(".container");
 const elementsPerRow = 10;
-//in questo array salvo tutti gli id estratti per il controllo di univocità
-const randomIds =[]
+const nBox = document.getElementById('difficulty');
+const resetButton = document.getElementById('reset');
+const startButton = document.getElementById('start');
+
+ startButton.addEventListener('click', function(){
+     container.innerHTML = '';
+     for(let i = 0; i < nBox.value; i++){
+         createSquare(i);
+     }
+})
+
+resetButton.addEventListener('click', function(){
+    nBox.value = '';
+    container.innerHTML = '';
+})
+
 
 init(elementsPerRow);
 
@@ -14,42 +28,43 @@ function init(numElements){
     const totalSquares = Math.pow(numElements, 2);
     console.log(totalSquares);
     for( let i = 0; i < totalSquares; i++ ){
-        createSquare(totalSquares);
+        createSquare(i);
     }
 }
 
 function createSquare(maxSquare){
-    //crea il quadratino
-    //lo valorizza
-    //lo appende al container
     const square = document.createElement("div");
     square.className = "square";
-    //creo una proprietà custom di square dove gli salvo il numero del quadratino
-    const randomId =getRandomNUmber(1, maxSquare);
-    square.idSq = randomId
-    square.innerHTML = randomId
+    square.innerHTML = maxSquare + 1;
+    square.idElement = maxSquare + 1;
+    square.style.width = genCalcCss();
+    square.style.height = genCalcCss();
     square.addEventListener("click",
-    clicksquare)
+    clickSquare)
     container.append(square);
 }
 
-function clicksquare(){
-//ottengo l'elemento html che ha scatenato l'evento
-    console.log(this.idSq);
-    this.innerHTML = this.idSq;
-//con l'operatore ternario filtro la classe da aggiungere
-    this.classList.add((this.idSq % 2) ? "odd" : "even")
+function clickSquare(){
+    console.log(this.idElement);
+    this.innerHTML = this.idElement;
 }
 
-function getUniqueRandomNUmber(numElements){
-    let randomId = getRandomNUmber(1, numElements);
-    while(!randomIds.includes(randomId)){
-    randomId = getRandomNUmber(1, numElements);
-}
-    randomIds.push(randomId);
-    return randomId;
+function genCalcCss(){
+    return `calc(100% / ${elementsPerRow}`;
 }
 
-function getRandomNUmber(min,max){
-    return Math.floor(Math.random()* (max - min +1)) + min;
+function livello(difficultyChosen){
+    if (difficultyChosen === "hard") {
+        return 10;
+    }
+    else if (difficultyChosen === "medium") {
+        return 9;
+    }
+    else {
+        return 7;
+    }
+}
+
+function clickSquare(){
+    this.classList.add('square-colore');
 }

@@ -6,7 +6,36 @@
 
 
 body{
-    background-color: goldenrod;
+    background-color: rgb(146, 143, 143);
+}
+
+header{
+  width: 100%;
+  text-align: center;
+}
+
+h1{
+  font-size: 60px;
+  color: rgb(190, 9, 190);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#difficulty{
+  margin: 50px;
+  padding: 7px;
+  background-color: yellow;
+  border: none;
+}
+
+button{
+  padding: 7px;
+  border: none;
+}
+#start{
+  background-color: green;
+}
+#reset{
+  background-color: red;
 }
 
 .main-wrapper{
@@ -30,12 +59,7 @@ body{
   align-items: center;
   cursor: pointer;
   border: 2px solid rgb(190, 9, 190);
-  width: calc(10%);
-  height: calc(10%);
 }
-.square.odd {
-  background-color: cyan;
-}
-.square.even{
+.square-colore{
   background-color: cyan;
 }
